@@ -102,3 +102,65 @@ print(f'A soma dos valores da terceira coluna iguala a: {matriz[0][2] + matriz[1
 print(f'A soma dos valores pares iguala a: {pares}')
 
 print(f'O maior valor da segunda linha foi: {mai}')
+
+from random import randint
+from time import sleep 
+
+print('-'*30)
+print('      JOGA NA MEGA SENA          ')
+print('-'*30)
+quant = int(input('Quantos jogos para sortear? '))
+
+lista = list()
+jogos = list()
+
+tot = 1
+
+while tot <= quant:
+     cont = 0
+     while True:
+      num = randint(0, 60)
+      if num not in lista:
+          cont+=1
+          lista.append(num)
+      if cont >= 6:
+          break
+     lista.sort()
+     jogos.append(lista[:])
+     lista.clear()
+     tot+=1
+for i, l in enumerate(jogos):
+   sleep(2)
+   print(f'Jogo {i}: {l}')
+
+
+boletim = []
+rel = []
+while True:
+     aluno = str(input('Nome do Aluno: '))
+     n1 = float(input('Primeira nota: '))
+     n2 = float(input('Segunda nota: '))
+     rel.append(aluno)
+     rel.append(n1)
+     rel.append(n2)
+     boletim.append(rel[:])
+     rel.clear()
+     prox = str(input('Quer continuar? [S/N]: ')).upper().strip()
+     
+     if prox == 'N':
+          break
+
+for u, r in enumerate(boletim):
+     print('-='*10)
+     print(f'Aluno -{u}-')
+     print(f'Nome: {r[0]}')
+     print(f'Nota(1): {r[1]}')
+     print(f'Nota(2): {r[2]}')
+     avg = (r[1] + r[2]) / 2
+     print(f'Media: {avg}')
+     print('-='*10)
+while True:
+     see = int(input('>> Mostrar notas de qual aluno? (999 interrompe): '))
+     if see == 999:
+          break
+     print(f'Notas de {boletim[see][0]} sao [{boletim[see][1]}, {boletim[see][2]}]')
