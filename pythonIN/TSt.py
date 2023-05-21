@@ -1,22 +1,32 @@
-jogador = dict()
-jogador['Nome'] = str(input('Nome do Jogador: '))
-jogador['gols'] = []
-jogador['total'] = 0
+from time import sleep
+c = ('\033[m',        # 0 - sem cores
+     '\033[0;30;41m', # 1 - vermelho
+     '\033[0;30;42m', # 2 - verde
+     '\033[7;30m',    # 3 - branco
+     '\033[0;30;44m'  # 4 - azul
+     )
 
-partidas = int(input(f'Quantas partidas {jogador["Nome"]} jogou? '))
-for g in range(0, partidas):
-    jogador['gols'].append(int(input(f'Quantos gols na partida {g}? ')))
-    jogador['total'] += jogador['gols'][g]
+def write(txt, cor=0):
+    print(c[cor], end='')
+    print('~' * (len(txt) + 4))
+    print(f'  {txt}  ')
+    print('~' * (len(txt) + 4))
+    print(c[0], end='')
+def ajuda(com):
+    write(f"Acessando o manual do comando '{com}'", 4)
+    sleep(2)
+    print(c[1], end='')
+    help(com)
+    print(c[0], end='')
 
-print('-=-'*15)
-print(jogador)
-print('-=-'*15)
-
-for k, v in jogador.items():
-    print(f'O campo {k} tem o valor {v}.')
-print('-=-'*15)
-
-print(f'O jogador {jogador["Nome"]} jogou {partidas} partidas.')
-for p in range(len(jogador['gols'])):
-    print(f"   => Na partida {p}, fez {jogador['gols'][p]} gols.")
-print(f'Foi um total de {jogador["total"]}')
+def interactive_sys():
+    while True:
+        
+        write('SISTEMA DE AJUDA PyHELP', 2)
+        C = input('Função ou Biblioteca > ')
+        if C == 'fim':
+            write('ATÉ LOGO', 1)
+            break 
+        ajuda(C)
+    
+interactive_sys()
