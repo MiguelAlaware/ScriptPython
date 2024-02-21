@@ -40,6 +40,20 @@ def arc(t, r, angle):
         t.fd(step_length) 
         t.lt(step_angle)
 
+def petal(t, r, angle):
+    for i in range(2): 
+      arc(t, r, angle)
+      t.lt(180-angle)
+        
+def flower(t, n, r, angle):
+    for i in range(n):
+        petal(t, r, angle)
+        t.lt(360.0/n)
+
+# flower(bob, 100, 8, 120)    
+flower(bob, 20, 140.0, 20.0)
+
 turtle.mainloop()
+
 
 
