@@ -50,8 +50,6 @@ def flower(t, n, r, angle):
         petal(t, r, angle)
         t.lt(360.0/n)
 
-# flower(bob, 100, 8, 120)    
-flower(bob, 20, 140.0, 20.0)
 
 turtle.mainloop()
 
