@@ -30,11 +30,21 @@ def eval_loop():
             break
         print(f">> {eval(line)}")
 
+def estimate_pi():
+    k = 0 
+    sum = 0 
+    third = 2 * math.sqrt(2) / 9801 
+    while True:
+        first = math.factorial(4 * k) * (1103 + 26390 * k) 
+        second = math.factorial(k)**4 * 396**(4*k) 
+        fourth = third * first / second 
+        sum+=fourth 
+        
+        if abs(fourth) < 1e-15:
+            break     
 
-def estimate_pi(k):
-    while k > 1e-15:
     
+        k+=1  
+    return 1 / sum
 
-
-
-    
+print(estimate_pi())
