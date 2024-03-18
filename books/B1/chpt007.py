@@ -28,10 +28,51 @@ def avoids_plus(file, avoid):
         else:
             pass
 
-def uses_only(file, pattern):
-    
+def uses_only(word, pattern):
+    only = list() 
+    for letter in word:
+        if letter in pattern: 
+            only.append(True)
+        else: 
+            only.append(False) 
+    if False in only:
+        return False
+    else:
+        return True
 
 
 
 
+
+def uses_all(word, pattern):
+     used = list()   
+     for letters in pattern:
+        if letters in word:
+            if letters in used:
+                pass
+            else:
+                used.append(letters)
+     return True if ''.join(used) == pattern else False
+
+def is_abcedarian(word):
+    i = 0
+    while i < len(word)-1:
+        if word[i+1] < word[i]:
+            return False
+        i += 1
+    return True
+
+
+def is_consecutive(word):
+    i = 0
+    if len(word) >= 6: 
+        while i < len(word)-1:
+            if word[i] == word[i+1]:
+                if word[i+2] == word[i+3]:
+                    if word[i+4] == word[i+5]:
+                            return True
+    else:
+        return False
+
+print(is_consecutive("bookkeeper"))
 
