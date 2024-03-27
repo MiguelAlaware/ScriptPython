@@ -94,7 +94,7 @@ def check_all():
         i = i + 1
 
 
-        
+check_all()
 
 
 
