@@ -1,4 +1,5 @@
-from random import randint
+import bisect
+import re
 
 def nested_sum(l):
     c = 0
@@ -51,10 +52,36 @@ def has_duplicates(l):
             return True
     return False
 
+def wordlist_1(file): 
+    l = list() 
+    with open(file, 'r') as archive:
+        lines = archive.readlines()
+        for line in lines:
+            l.append(line.strip()) 
+        return l 
 
+def wordlist_2(file):
+    l = list() 
+    f = open(file)
+    for line in f:
+        l = l + [line]
+    return l
 
+def in_bisect(l, target):
+    sorted(l)
+    if l[bisect.bisect_left(l, target)] == target:
+        return bisect.bisect_left(l, target)
+    elif l[bisect.bisect_right(l,target)] == target:
+        return bisect.bisect_right(l, target)
 
+def inverse(f):
+    l = list() 
+    r = open(f)
+    for line in r:
+        l.append(line[::-1].strip())
+    return(l)
 
+print(inverse("words.txt"))
 
 
 
