@@ -80,8 +80,3 @@ def inverse(f):
     for line in r:
         l.append(line[::-1].strip())
     return(l)
-
-print(inverse("words.txt"))
-
-
-
